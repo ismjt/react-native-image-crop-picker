@@ -7,8 +7,13 @@ declare module "react-native-image-crop-picker" {
         path?: string;
         includeBase64?: boolean;
         includeExif?: boolean;
+        cropperActiveWidgetColor?: string;
+        cropperStatusBarColor?: string;
+        cropperToolbarColor?: string;
+        freeStyleCropEnabled?: boolean;
         cropperTintColor?: string;
         cropperCircleOverlay?: boolean;
+        disableCropperColorSetters?: boolean;
         maxFiles?: number;
         waitAnimationEnd?: boolean;
         smartAlbums?: string[];
@@ -23,6 +28,8 @@ declare module "react-native-image-crop-picker" {
         showCropGuidelines?: boolean;
         hideBottomControls?: boolean;
         enableRotationGesture?: boolean;
+        cropperCancelText?: string;
+        cropperChooseText?: string;
     }
 
     export interface Image {
@@ -33,6 +40,14 @@ declare module "react-native-image-crop-picker" {
         height: number;
         mime: string;
         exif: null | object;
+        cropRect: null | CropRect
+    }
+
+    export interface CropRect {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
     }
 
     export function openPicker(options: Options): Promise<Image | Image[]>;
